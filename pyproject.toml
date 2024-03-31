@@ -11,6 +11,9 @@ python = "3.11.*"
 fastapi = "^0.110.0"
 uvicorn = {extras = ["standard"], version = "^0.29.0"}
 pydantic = {extras = ["email"], version = "^2.6.4"}
+sqlalchemy = "^2.0.29"
+pydantic-settings = "^2.2.1"
+alembic = "^1.13.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
@@ -45,5 +48,5 @@ lint = 'ruff check . && blue --check . --diff && isort --check . --diff'
 format = 'blue .  && isort .'
 run = 'uvicorn fast_zero.app:app --reload'
 pre_test = 'task lint'
-test = 'pytest -s -x --cov=fast_zero -vv'
+test = 'pytest -s -x --cov=fast_zero -vv -p no:warnings'
 post_test = 'coverage html'
